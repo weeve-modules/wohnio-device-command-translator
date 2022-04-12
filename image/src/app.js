@@ -46,31 +46,29 @@ app.get('/health', async (req, res) => {
 //main post listener
 app.post('/', async (req, res) => {
   let json = req.body
-  if (!json || typeof json.command=='undefined') {
+  if (!json || typeof json.command == 'undefined') {
     return res.status(400).json({ status: false, message: 'Data structure is not valid.' })
   }
-  if (typeof json.manufacturer=='undefined') {
-    return res
-      .status(400)
-      .json({ status: false, message: 'Manufacturer is not provided.' })
+  if (typeof json.manufacturer == 'undefined') {
+    return res.status(400).json({ status: false, message: 'Manufacturer is not provided.' })
   }
-  if (typeof json.device_type=='undefined') {
-    return res
-      .status(400)
-      .json({ status: false, message: 'Device type is not provided.' })
+  if (typeof json.device_type == 'undefined') {
+    return res.status(400).json({ status: false, message: 'Device type is not provided.' })
   }
   //for now we read JSON file, later this should be in DB or somewhere else, like served from service
   let mapper = null
   switch (json.manufacturer.toLowerCase()) {
     case 'mcclimate':
-      switch (json.device_type.toLowerCase()){
-        case "vickithermostat":
+      switch (json.device_type.toLowerCase()) {
+        case 'vickithermostat':
           mapper = JSON.parse(fs.readFileSync('mcclimatevickithermostat.json'))
           break
-      }      
+      }
   }
   if (!mapper) {
-    return res.status(400).json({ status: false, message: 'Could not load mapper data for selected Manufacturer and device type.' })
+    return res
+      .status(400)
+      .json({ status: false, message: 'Could not load mapper data for selected Manufacturer and device type.' })
   }
   let result = parseCommand(json, mapper)
   if (result === false) {

@@ -1,11 +1,11 @@
 # Generic Translator Module
 
-|                |                             |
-| -------------- | --------------------------- |
+|                |                                     |
+| -------------- | ----------------------------------- |
 | Name           | Generic Translator Module           |
-| Version        | v1.0.0                      |
+| Version        | v1.0.0                              |
 | Dockerhub Link | [weevenetwork/generic-translator]() |
-| Authors        | Mesud Pasic                 |
+| Authors        | Mesud Pasic                         |
 
 - [MQTT Ingress](#generic-translator)
   - [Description](#description)
@@ -34,13 +34,12 @@ Encoder for Vicki LoRaWAN's commands.
 
 ### Set by the weeve Agent on the edge-node
 
-| Environment Variables | type | Description |
-| --- | --- | --- |
-| MODULE_NAME | string | Name of the module |
-| HOST_NAME | string | Host where app is running |
-| HOST_PORT | string | Port where app is running |
-| EGRESS_URL | string | URL for passing the result output to next module |
-
+| Environment Variables | type   | Description                                      |
+| --------------------- | ------ | ------------------------------------------------ |
+| MODULE_NAME           | string | Name of the module                               |
+| HOST_NAME             | string | Host where app is running                        |
+| HOST_PORT             | string | Port where app is running                        |
+| EGRESS_URL            | string | URL for passing the result output to next module |
 
 - Module translates JSON command input from MongoDB (application) to compatible command interface for specific device, so that encoder module can convert it to valid command
 - Input JSON (example for McClimate Vicki Thermostat)
