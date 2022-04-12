@@ -1,0 +1,10 @@
+version: '1'
+services:
+  generic_translator_service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      MODULE_NAME: generic_translator_service
+      HOST_NAME: 127.0.0.1
+      HOST_PORT: 80

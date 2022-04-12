@@ -1,0 +1,41 @@
+version: 1.0.0
+name: Generic Translator Module
+description: Module translates commands from application to device compatible commands
+icon: https://icons-020-demo.s3.eu-central-1.amazonaws.com/mi_translator_process.png
+type: process
+tags:
+  - Generic Translator
+categories:
+  - id: category
+    name: Generic Translator
+image:
+  name: weevenetwork/generic-translator
+  tag: latest
+environments:
+  - key: HOST_NAME
+    description: Host name/address where the server will run.
+    value: ''
+    default: 0.0.0.0
+    type: string
+    name: Host Name
+  - key: HOST_PORT
+    description: Port on which the server will run.
+    value: ''
+    default: 80
+    type: integer
+    name: Port
+  - key: EGRESS_URL
+    description: URL to pass the result payload to
+    value: ''
+    default:
+    type: string
+    name: Egress URL
+commands: []
+document:
+  ports: []
+  volumes: []
+  restart_policy:
+    condition: on-failure
+    delay: 10s
+    max_attempts: 3
+    window: 120s

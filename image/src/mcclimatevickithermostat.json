@@ -1,0 +1,13 @@
+{
+  "commands": [
+    {
+      "command": {
+        "originalName": "setTemperature",
+        "deviceName": "setTargetTemperature",
+        "params": {
+          "value": "targetTemperature"
+        }
+      }
+    }
+  ]
+}
