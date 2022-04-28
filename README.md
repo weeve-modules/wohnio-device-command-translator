@@ -7,7 +7,7 @@
 | Dockerhub Link | [weevenetwork/generic-translator]() |
 | Authors        | Mesud Pasic                         |
 
-- [MQTT Ingress](#generic-translator)
+- [Generic Translator](#generic-translator)
   - [Description](#description)
   - [Features](#features)
   - [Environment Variables](#environment-variables)
@@ -17,7 +17,7 @@
 
 ## Description
 
-Encoder for Vicki LoRaWAN's commands.
+Module translates commands from application to device compatible commands.
 
 ## Features
 
@@ -28,16 +28,13 @@ Encoder for Vicki LoRaWAN's commands.
 
 ## Environment Variables
 
-- INGRESS_HOST
-- INGRESS_PORT
+INGRESS_HOST and INGRESS_PORT are set by weeve Agent.
 
 ### Set by the weeve Agent on the edge-node
 
 | Environment Variables | type   | Description               |
 | --------------------- | ------ | ------------------------- |
 | MODULE_NAME           | string | Name of the module        |
-| INGRESS_HOST          | string | Host where app is running |
-| INGRESS_PORT          | string | Port where app is running |
 
 - Module translates JSON command input from MongoDB (application) to compatible command interface for specific device, so that encoder module can convert it to valid command
 - Input JSON (example for McClimate Vicki Thermostat)

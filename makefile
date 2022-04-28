@@ -1,5 +1,5 @@
 SHELL := /bin/bash
-MODULE=weevenetwork/translator
+MODULE=weevenetwork/generic-translator
 create_image:
 	docker build -t ${MODULE} . -f image/Dockerfile
 .phony: create_image
