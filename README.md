@@ -4,7 +4,7 @@
 | -------------- | ----------------------------------- |
 | Name           | Generic Translator Module           |
 | Version        | v1.0.0                              |
-| Dockerhub Link | [weevenetwork/generic-translator]() |
+| Dockerhub Link | [weevenetwork/generic-translator](https://hub.docker.com/r/weevenetwork/generic-translator) |
 | Authors        | Mesud Pasic                         |
 
 - [Generic Translator](#generic-translator)
