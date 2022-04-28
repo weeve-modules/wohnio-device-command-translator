@@ -24,22 +24,20 @@ Encoder for Vicki LoRaWAN's commands.
 - Parsing Melita.io data for thermostat
 - Sends data to next module service via REST API
 
+### Module Specific
+
 ## Environment Variables
 
-- HOST_NAME
-- HOST_PORT
-- EGRESS_URL
-
-### Module Specific
+- INGRESS_HOST
+- INGRESS_PORT
 
 ### Set by the weeve Agent on the edge-node
 
-| Environment Variables | type   | Description                                      |
-| --------------------- | ------ | ------------------------------------------------ |
-| MODULE_NAME           | string | Name of the module                               |
-| HOST_NAME             | string | Host where app is running                        |
-| HOST_PORT             | string | Port where app is running                        |
-| EGRESS_URL            | string | URL for passing the result output to next module |
+| Environment Variables | type   | Description               |
+| --------------------- | ------ | ------------------------- |
+| MODULE_NAME           | string | Name of the module        |
+| INGRESS_HOST          | string | Host where app is running |
+| INGRESS_PORT          | string | Port where app is running |
 
 - Module translates JSON command input from MongoDB (application) to compatible command interface for specific device, so that encoder module can convert it to valid command
 - Input JSON (example for McClimate Vicki Thermostat)
@@ -49,7 +47,7 @@ Encoder for Vicki LoRaWAN's commands.
   "manufacturer":"mcclimate",
   "device_type":"vickithermostat",
 	"command":{
-		"name": "setTemperature",
+		"name": "setTemperatur",
 		"params":{
 			"value": 20
 		}

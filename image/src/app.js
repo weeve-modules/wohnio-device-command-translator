@@ -1,4 +1,4 @@
-const { EGRESS_URL, HOST_NAME, HOST_PORT, MODULE_NAME } = require('./config/config.js')
+const { EGRESS_URL, INGRESS_HOST, INGRESS_PORT, MODULE_NAME } = require('./config/config.js')
 const fetch = require('node-fetch')
 const express = require('express')
 const bodyParser = require('body-parser')
@@ -110,7 +110,7 @@ app.use(async (err, req, res, next) => {
 })
 
 if (require.main === module) {
-  app.listen(HOST_PORT, HOST_NAME, () => {
-    console.log(`${MODULE_NAME} listening on ${HOST_PORT}`)
+  app.listen(INGRESS_PORT, INGRESS_HOST, () => {
+    console.log(`${MODULE_NAME} listening on ${INGRESS_PORT}`)
   })
 }

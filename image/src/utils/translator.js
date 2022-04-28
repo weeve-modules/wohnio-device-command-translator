@@ -2,7 +2,7 @@
 JSON coming from MongoDB:
 
 command:{
-  name: "setTemperature",
+  name: "setTemperatur",
   params:{
   "value": 20
   }
@@ -12,7 +12,7 @@ needs to be parsed and translated to correct command for device with correct par
 
  "command":
  {
-      "originalName":"setTemperature",
+      "originalName":"setTemperatur",
       "deviceName":"setTargetTemperature",
       "params":{
           "value":"targetTemperature"
