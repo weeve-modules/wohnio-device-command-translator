@@ -7,7 +7,7 @@ const expressWinston = require('express-winston')
 const { parseCommand } = require('./utils/translator')
 const { formatTimeDiff } = require('./utils/util')
 const fs = require('fs')
-
+const path = require('path')
 //initialization
 app.use(express.urlencoded({ extended: true }))
 app.use(
@@ -70,7 +70,7 @@ app.post('/', async (req, res) => {
     case 'mcclimate':
       switch (json.device_type.toLowerCase()) {
         case 'vickithermostat':
-          mapper = JSON.parse(fs.readFileSync('mcclimatevickithermostat.json'))
+          mapper = JSON.parse(fs.readFileSync(path.join(__dirname, '/mcclimatevickithermostat.json')))
           break
       }
   }
