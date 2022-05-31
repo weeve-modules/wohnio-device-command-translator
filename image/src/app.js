@@ -102,7 +102,7 @@ app.post('/', async (req, res) => {
     if (!callRes.ok) {
       return res.status(500).json({ status: false, message: `Error passing response data to ${EGRESS_URL}` })
     }
-    return res.status(200).json({ status: true, message: 'Payload processed' })    
+    return res.status(200).json({ status: true, message: 'Payload processed' })
   }
 })
 
