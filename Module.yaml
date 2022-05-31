@@ -12,6 +12,14 @@ image:
   name: weevenetwork/generic-translator
   tag: latest
 environments:
+  - key: RUN_AS_STANDALONE
+    description: Run as standalone rest API service
+    value: ''
+    default: yes
+    type: enum
+    options:
+      - yes
+      - no
 commands: []
 document:
   ports: []

@@ -1,11 +1,11 @@
 # Generic Translator Module
 
-|                |                                     |
-| -------------- | ----------------------------------- |
-| Name           | Generic Translator Module           |
-| Version        | v1.0.0                              |
+|                |                                                                                             |
+| -------------- | ------------------------------------------------------------------------------------------- |
+| Name           | Generic Translator Module                                                                   |
+| Version        | v1.0.0                                                                                      |
 | Dockerhub Link | [weevenetwork/generic-translator](https://hub.docker.com/r/weevenetwork/generic-translator) |
-| Authors        | Mesud Pasic                         |
+| Authors        | Mesud Pasic                                                                                 |
 
 - [Generic Translator](#generic-translator)
   - [Description](#description)
@@ -28,13 +28,17 @@ Module translates commands from application to device compatible commands.
 
 ## Environment Variables
 
+| Environment Variables | type   | Description                        |
+| --------------------- | ------ | ---------------------------------- |
+| RUN_AS_STANDALONE     | string | Run as standalone rest API service |
+
 INGRESS_HOST and INGRESS_PORT are set by weeve Agent.
 
 ### Set by the weeve Agent on the edge-node
 
-| Environment Variables | type   | Description               |
-| --------------------- | ------ | ------------------------- |
-| MODULE_NAME           | string | Name of the module        |
+| Environment Variables | type   | Description        |
+| --------------------- | ------ | ------------------ |
+| MODULE_NAME           | string | Name of the module |
 
 - Module translates JSON command input from MongoDB (application) to compatible command interface for specific device, so that encoder module can convert it to valid command
 - Input JSON (example for McClimate Vicki Thermostat)
