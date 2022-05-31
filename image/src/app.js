@@ -1,4 +1,4 @@
-const { EGRESS_URL, INGRESS_HOST, INGRESS_PORT, MODULE_NAME } = require('./config/config.js')
+const { EGRESS_URL, INGRESS_HOST, INGRESS_PORT, MODULE_NAME, RUN_AS_STANDALONE } = require('./config/config.js')
 const fetch = require('node-fetch')
 const express = require('express')
 const app = express()
@@ -83,7 +83,13 @@ app.post('/', async (req, res) => {
   if (result === false) {
     return res.status(400).json({ status: false, message: 'Bad command or parameters provided.' })
   }
-  if (EGRESS_URL !== '') {
+  if (RUN_AS_STANDALONE !== 'no' || EGRESS_URL == '') {
+    // parse data property, and update it
+    return res.status(200).json({
+      status: true,
+      data: result,
+    })
+  } else {
     const callRes = await fetch(EGRESS_URL, {
       method: 'POST',
       headers: {
@@ -96,13 +102,7 @@ app.post('/', async (req, res) => {
     if (!callRes.ok) {
       return res.status(500).json({ status: false, message: `Error passing response data to ${EGRESS_URL}` })
     }
-    return res.status(200).json({ status: true, message: 'Payload processed' })
-  } else {
-    // parse data property, and update it
-    return res.status(200).json({
-      status: true,
-      data: result,
-    })
+    return res.status(200).json({ status: true, message: 'Payload processed' })    
   }
 })
 

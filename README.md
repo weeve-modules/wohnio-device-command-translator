@@ -28,6 +28,10 @@ Module translates commands from application to device compatible commands.
 
 ## Environment Variables
 
+| Environment Variables | type   | Description                        |
+| --------------------- | ------ | ---------------------------------- |
+| RUN_AS_STANDALONE     | string | Run as standalone rest API service |
+
 INGRESS_HOST and INGRESS_PORT are set by weeve Agent.
 
 ### Set by the weeve Agent on the edge-node
