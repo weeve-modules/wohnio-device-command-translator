@@ -20,6 +20,7 @@ environments:
     options:
       - yes
       - no
+    name: Run as Standalone
 commands: []
 document:
   ports: []
