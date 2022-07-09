@@ -17,7 +17,7 @@
 
 ## Description
 
-Module translates commands from application to device compatible commands.
+Module translates commands from application to device compatible commands, based on defined JSON template file. 
 
 ## Features
 
