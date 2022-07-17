@@ -1,11 +1,11 @@
 version: '1'
 services:
-  generic-translator_service:
+  wohnio-device-command-translator:
     build:
       context: .
       dockerfile: Dockerfile
     environment:
-      MODULE_NAME: Wohn.io Device Command Translator
+      MODULE_NAME: wohnio-device-command-translator
       INGRESS_HOST: 127.0.0.1
       INGRESS_PORT: 80
       RUN_AS_STANDALONE: 'yes'

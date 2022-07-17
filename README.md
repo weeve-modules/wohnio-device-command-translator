@@ -4,10 +4,10 @@
 | -------------- | ------------------------------------------------------------------------------------------- |
 | Name           | Wohn.io Device Command Translator                                                           |
 | Version        | v1.0.0                                                                                      |
-| Dockerhub Link | [weevenetwork/generic-translator](https://hub.docker.com/r/weevenetwork/generic-translator) |
+| Dockerhub Link | [weevenetwork/wohnio-device-command-translator](https://hub.docker.com/r/weevenetwork/wohnio-device-command-translator) |
 | Authors        | Mesud Pasic                                                                                 |
 
-- [Wohn.io Device Command Translator](#generic-translator)
+- [Wohn.io Device Command Translator](#wohn.io-device-command-translator)
   - [Description](#description)
   - [Features](#features)
   - [Environment Variables](#environment-variables)
