@@ -38,7 +38,9 @@ INGRESS_HOST and INGRESS_PORT are set by weeve Agent.
 
 | Environment Variables | type   | Description        |
 | --------------------- | ------ | ------------------ |
-| MODULE_NAME           | string | Name of the module |
+| MODULE_NAME           | string | Name of the module           |
+| INGRESS_HOST          | string | Host where app is running    |
+| INGRESS_PORT          | string | Port where app is running    |
 
 - Module translates JSON command input from MongoDB (application) to compatible command interface for specific device, so that encoder module can convert it to valid command
 - Input JSON (example for McClimate Vicki Thermostat)
