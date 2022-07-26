@@ -8,7 +8,7 @@ const { parseCommand } = require('./utils/translator')
 const { formatTimeDiff } = require('./utils/util')
 const fs = require('fs')
 const path = require('path')
-//initialization
+// initialization
 app.use(express.urlencoded({ extended: true }))
 app.use(
   express.json({
@@ -22,7 +22,7 @@ app.use(
   })
 )
 
-//logger
+// logger
 app.use(
   expressWinston.logger({
     transports: [
@@ -44,7 +44,7 @@ app.use(
   })
 )
 const startTime = Date.now()
-//health check
+// health check
 app.get('/health', async (req, res) => {
   res.json({
     serverStatus: 'Running',
@@ -52,19 +52,19 @@ app.get('/health', async (req, res) => {
     module: MODULE_NAME,
   })
 })
-//main post listener
+// main post listener
 app.post('/', async (req, res) => {
-  let json = req.body
-  if (!json || typeof json.command == 'undefined') {
+  const json = req.body
+  if (!json || typeof json.command === 'undefined') {
     return res.status(400).json({ status: false, message: 'Data structure is not valid.' })
   }
-  if (typeof json.manufacturer == 'undefined') {
+  if (typeof json.manufacturer === 'undefined') {
     return res.status(400).json({ status: false, message: 'Manufacturer is not provided.' })
   }
-  if (typeof json.device_type == 'undefined') {
+  if (typeof json.device_type === 'undefined') {
     return res.status(400).json({ status: false, message: 'Device type is not provided.' })
   }
-  //for now we read JSON file, later this should be in DB or somewhere else, like served from service
+  // for now we read JSON file, later this should be in DB or somewhere else, like served from service
   let mapper = null
   switch (json.manufacturer.toLowerCase()) {
     case 'mcclimate':
@@ -79,11 +79,11 @@ app.post('/', async (req, res) => {
       .status(400)
       .json({ status: false, message: 'Could not load mapper data for selected Manufacturer and device type.' })
   }
-  let result = parseCommand(json, mapper)
+  const result = parseCommand(json, mapper)
   if (result === false) {
     return res.status(400).json({ status: false, message: 'Bad command or parameters provided.' })
   }
-  if (RUN_AS_STANDALONE !== 'no' || EGRESS_URLS == '') {
+  if (RUN_AS_STANDALONE !== 'no' || !EGRESS_URLS) {
     // parse data property, and update it
     return res.status(200).json({
       status: true,
@@ -106,12 +106,12 @@ app.post('/', async (req, res) => {
   }
 })
 
-//handle exceptions
+// handle exceptions
 app.use(async (err, req, res, next) => {
   if (res.headersSent) {
     return next(err)
   }
-  let errCode = err.status || 401
+  const errCode = err.status || 401
   res.status(errCode).send({
     status: false,
     message: err.message,
