@@ -1,32 +1,34 @@
-version: 1.0.0
-name: Wohn.io Device Command Translator
-description: Module translates commands from application to device compatible commands, based on defined JSON template file.
-icon: https://icons-020-demo.s3.eu-central-1.amazonaws.com/mi_translator_process.png
-type: process
-tags:
-  - Command translator
-categories:
-  - id: category
-    name: Policy
+displayName: 'Wohn.io Device Command Translator'       # Display name for the module that will be displayed in the UI.
+moduleName: 'generic-translator'        # Module name that will be used to reference the module, and uniquely identify the module and their versions.
+description: 'Module translates commands from application to device compatible commands, based on defined JSON template file.'       # Module description that will be displayed in the UI.
+versionName: 'v1.0.0'                    # Module version name that will be used to reference the module version, and uniquely identify the module version with a common name.
+isPublic: true                          # Boolean value that indicates if the module is Public or Private.
+categories:                             # Array of category that will be used to group the module in the UI.
+  - 'Translator'
+type: 'Processing'      # Module type (Input, Processing, Output) that will be used to group the module in the UI.
 image:
-  name: weevenetwork/wohnio-device-command-translator
-  tag: latest
-environments:
-  - key: RUN_AS_STANDALONE
+  name: 'weevenetwork/generic-translator'     # Image name from the docker registry.
+  tag: 'v1.0.0'                               # Image tag from the docker registry.
+  homepage: 'https://hub.docker.com/weevenetwork/generic-translator'      # Image homepage from the docker registry.
+repository: 'https://github.com/weeve-modules/generic-translator'     # Repository URL to source code.
+envs:                                   # Array of environment variables that will be used to configure the module. Also used to show related fields on the UI.
+  - name: Run as Standalone
+    key: RUN_AS_STANDALONE
     description: Run as standalone rest API service
-    value: ''
-    default: yes
-    type: enum
+    value: 'yes'    
+    type: 'select'
     options:
       - yes
       - no
-    name: Run as Standalone
-commands: []
-document:
-  ports: []
-  volumes: []
-  restart_policy:
-    condition: on-failure
-    delay: 10s
-    max_attempts: 3
-    window: 120s
+ports:                                  # Array of ports that will be exposed by the module.
+  - container: 8080                     # Port number from the container.
+    host: 8080                          # Port number to map on the host.
+mounts:
+  - container: '/data'                  # Mount path from the container.
+    host: '/data'                       # Mount path to map on the host.
+tags:                                   # Array of tags.
+  - 'NodeJS'
+  - 'Processing'
+  - 'Translator'
+  - 'Boilerplate 1.0.0'
+icon: 'https://icons-020-demo.s3.eu-central-1.amazonaws.com/mi_translator_process.png'    # Icon URL that will be displayed in the UI.
