@@ -4,7 +4,7 @@
 | -------------- | ------------------------------------------------------------------------------------------- |
 | Name           | Wohn.io Device Command Translator                                                           |
 | Version        | v1.0.0                                                                                      |
-| Dockerhub Link | [weevenetwork/generic-translator](https://hub.docker.com/r/weevenetwork/generic-translator) |
+| DockerHub | [weevenetwork/generic-translator](https://hub.docker.com/r/weevenetwork/generic-translator) |
 | Authors        | Mesud Pasic                                                                                 |
 
 - [Wohn.io Device Command Translator](#generic-translator)
@@ -39,8 +39,10 @@ INGRESS_HOST and INGRESS_PORT are set by weeve Agent.
 | Environment Variables | type   | Description               |
 | --------------------- | ------ | ------------------------- |
 | MODULE_NAME           | string | Name of the module        |
+| MODULE_TYPE           | string | Type of the module (Input, Processing, Output)    |
 | INGRESS_HOST          | string | Host where app is running |
 | INGRESS_PORT          | string | Port where app is running |
+| EGRESS_URLS           | string | HTTP ReST endpoint for the next module            |
 
 - Module translates JSON command input from MongoDB (application) to compatible command interface for specific device, so that encoder module can convert it to valid command
 - Input JSON (example for McClimate Vicki Thermostat)
