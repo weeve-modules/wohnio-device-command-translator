@@ -1,13 +1,13 @@
 # Wohn.io Device Command Translator
 
-|                |                                                                                             |
-| -------------- | ------------------------------------------------------------------------------------------- |
-| Name           | Wohn.io Device Command Translator                                                           |
-| Version        | v1.0.0                                                                                      |
-| DockerHub | [weevenetwork/generic-translator](https://hub.docker.com/r/weevenetwork/generic-translator) |
-| Authors        | Mesud Pasic                                                                                 |
+|  |  |
+| --- | --- |
+| Name | Wohn.io Device Command Translator |
+| Version | v1.0.0 |
+| DockerHub | [weevenetwork/wohnio-device-command-translator](https://hub.docker.com/r/weevenetwork/wohnio-device-command-translator) |
+| Authors | Mesud Pasic |
 
-- [Wohn.io Device Command Translator](#generic-translator)
+- [Wohn.io Device Command Translator](#wohnio-device-command-translator)
   - [Description](#description)
   - [Features](#features)
   - [Environment Variables](#environment-variables)
@@ -36,13 +36,13 @@ INGRESS_HOST and INGRESS_PORT are set by weeve Agent.
 
 ### Set by the weeve Agent on the edge-node
 
-| Environment Variables | type   | Description               |
-| --------------------- | ------ | ------------------------- |
-| MODULE_NAME           | string | Name of the module        |
-| MODULE_TYPE           | string | Type of the module (Input, Processing, Output)    |
-| INGRESS_HOST          | string | Host where app is running |
-| INGRESS_PORT          | string | Port where app is running |
-| EGRESS_URLS           | string | HTTP ReST endpoint for the next module            |
+| Environment Variables | type   | Description                                    |
+| --------------------- | ------ | ---------------------------------------------- |
+| MODULE_NAME           | string | Name of the module                             |
+| MODULE_TYPE           | string | Type of the module (Input, Processing, Output) |
+| INGRESS_HOST          | string | Host where app is running                      |
+| INGRESS_PORT          | string | Port where app is running                      |
+| EGRESS_URLS           | string | HTTP ReST endpoint for the next module         |
 
 - Module translates JSON command input from MongoDB (application) to compatible command interface for specific device, so that encoder module can convert it to valid command
 - Input JSON (example for McClimate Vicki Thermostat)

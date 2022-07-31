@@ -5,7 +5,6 @@ const app = express()
 const winston = require('winston')
 const expressWinston = require('express-winston')
 const { parseCommand } = require('./utils/translator')
-const { formatTimeDiff } = require('./utils/util')
 const fs = require('fs')
 const path = require('path')
 // initialization
@@ -43,15 +42,6 @@ app.use(
     }, // optional: allows to skip some log messages based on request and/or response
   })
 )
-const startTime = Date.now()
-// health check
-app.get('/health', async (req, res) => {
-  res.json({
-    serverStatus: 'Running',
-    uptime: formatTimeDiff(Date.now(), startTime),
-    module: MODULE_NAME,
-  })
-})
 // main post listener
 app.post('/', async (req, res) => {
   const json = req.body
@@ -90,18 +80,29 @@ app.post('/', async (req, res) => {
       data: result,
     })
   } else {
-    const callRes = await fetch(EGRESS_URLS, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        data: result,
-      }),
-    })
-    if (!callRes.ok) {
-      return res.status(500).json({ status: false, message: `Error passing response data to ${EGRESS_URLS}` })
+    const urls = []
+    const eUrls = EGRESS_URLS.replace(/ /g, '')
+    if (eUrls.indexOf(',') !== -1) {
+      urls.push(...eUrls.split(','))
+    } else {
+      urls.push(eUrls)
     }
+    urls.forEach(async url => {
+      if (url) {
+        const callRes = await fetch(url, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            data: result,
+          }),
+        })
+        if (!callRes.ok) {
+          console.error(`Error passing response data to ${url}`)
+        }
+      }
+    })
     return res.status(200).json({ status: true, message: 'Payload processed' })
   }
 })

@@ -1,5 +1,5 @@
 displayName: 'Wohn.io Device Command Translator'       # Display name for the module that will be displayed in the UI.
-moduleName: 'generic-translator'        # Module name that will be used to reference the module, and uniquely identify the module and their versions.
+moduleName: 'wohnio-device-command-translator'        # Module name that will be used to reference the module, and uniquely identify the module and their versions.
 description: 'Module translates commands from application to device compatible commands, based on defined JSON template file.'       # Module description that will be displayed in the UI.
 versionName: 'v1.0.0'                    # Module version name that will be used to reference the module version, and uniquely identify the module version with a common name.
 isPublic: true                          # Boolean value that indicates if the module is Public or Private.
@@ -7,10 +7,10 @@ categories:                             # Array of category that will be used to
   - 'Policies'
 type: 'Processing'      # Module type (Input, Processing, Output) that will be used to group the module in the UI.
 image:
-  name: 'weevenetwork/generic-translator'     # Image name from the docker registry.
+  name: 'weevenetwork/wohnio-device-command-translator'     # Image name from the docker registry.
   tag: 'v1.0.0'                               # Image tag from the docker registry.
-  homepage: 'https://hub.docker.com/weevenetwork/generic-translator'      # Image homepage from the docker registry.
-repository: 'https://github.com/weeve-modules/generic-translator'     # Repository URL to source code.
+  homepage: 'https://hub.docker.com/weevenetwork/wohnio-device-command-translator'      # Image homepage from the docker registry.
+repository: 'https://github.com/weeve-modules/wohnio-device-command-translator'     # Repository URL to source code.
 envs:                                   # Array of environment variables that will be used to configure the module. Also used to show related fields on the UI.
   - name: Run as Standalone
     key: RUN_AS_STANDALONE
