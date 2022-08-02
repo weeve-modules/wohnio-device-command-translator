@@ -1,6 +1,6 @@
 version: "3.0"
 services:
-  generic-translator:
+  wohnio-device-command-translator:
     build:
       context: ../
       dockerfile: docker/Dockerfile

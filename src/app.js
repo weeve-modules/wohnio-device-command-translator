@@ -1,11 +1,9 @@
 const { EGRESS_URLS, INGRESS_HOST, INGRESS_PORT, MODULE_NAME, RUN_AS_STANDALONE } = require('./config/config.js')
-const fetch = require('node-fetch')
 const express = require('express')
 const app = express()
 const winston = require('winston')
 const expressWinston = require('express-winston')
-const { parseCommand } = require('./utils/translator')
-const { formatTimeDiff } = require('./utils/util')
+const { parseCommand, send } = require('./utils/translator')
 const fs = require('fs')
 const path = require('path')
 // initialization
@@ -43,15 +41,6 @@ app.use(
     }, // optional: allows to skip some log messages based on request and/or response
   })
 )
-const startTime = Date.now()
-// health check
-app.get('/health', async (req, res) => {
-  res.json({
-    serverStatus: 'Running',
-    uptime: formatTimeDiff(Date.now(), startTime),
-    module: MODULE_NAME,
-  })
-})
 // main post listener
 app.post('/', async (req, res) => {
   const json = req.body
@@ -90,18 +79,9 @@ app.post('/', async (req, res) => {
       data: result,
     })
   } else {
-    const callRes = await fetch(EGRESS_URLS, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        data: result,
-      }),
+    await send({
+      data: result,
     })
-    if (!callRes.ok) {
-      return res.status(500).json({ status: false, message: `Error passing response data to ${EGRESS_URLS}` })
-    }
     return res.status(200).json({ status: true, message: 'Payload processed' })
   }
 })
