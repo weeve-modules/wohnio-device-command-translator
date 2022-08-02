@@ -20,10 +20,7 @@ envs:                                   # Array of environment variables that wi
     options:
       - yes
       - no
-    dependencies: []
-ports:                                  # Array of ports that will be exposed by the module.
-  - container: 8080                     # Port number from the container.
-    host: 8080                          # Port number to map on the host.
+    dependencies: []                       # Port number to map on the host.
 mounts: []
 tags:                                   # Array of tags.
   - 'NodeJS'
