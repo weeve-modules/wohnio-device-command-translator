@@ -9,7 +9,7 @@ type: 'Processing'      # Module type (Input, Processing, Output) that will be u
 image:
   name: 'weevenetwork/wohnio-device-command-translator'     # Image name from the docker registry.
   tag: 'v1.0.0'                               # Image tag from the docker registry.
-  homepage: 'https://hub.docker.com/weevenetwork/wohnio-device-command-translator'      # Image homepage from the docker registry.
+  homepage: 'https://hub.docker.com/r/weevenetwork/wohnio-device-command-translator'      # Image homepage from the docker registry.
 repository: 'https://github.com/weeve-modules/wohnio-device-command-translator'     # Repository URL to source code.
 envs:                                   # Array of environment variables that will be used to configure the module. Also used to show related fields on the UI.
   - name: Run as Standalone
