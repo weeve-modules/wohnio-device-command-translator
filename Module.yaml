@@ -20,7 +20,7 @@ envs:                                   # Array of environment variables that wi
     options:
       - yes
       - no
-    dependencies: []                       # Port number to map on the host.
+    dependencies: []
 mounts: []
 tags:                                   # Array of tags.
   - 'NodeJS'
