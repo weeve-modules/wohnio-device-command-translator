@@ -21,10 +21,15 @@ envs:                                   # Array of environment variables that wi
       - yes
       - no
     dependencies: []
+ports: []
+envPorts: []
+devices: []
+envDevices: []
 mounts: []
+envMounts: []
 tags:                                   # Array of tags.
   - 'NodeJS'
   - 'Processing'
   - 'Translator'
-  - 'Boilerplate 1.0.0'
+  - '1.0.0'
 icon: 'https://icons-020-demo.s3.eu-central-1.amazonaws.com/mi_translator_process.png'    # Icon URL that will be displayed in the UI.
